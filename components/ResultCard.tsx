@@ -6,8 +6,6 @@ import "./ResultCard.css";
 type Item = {
   category: string;
   score: number;
-  icon: string;
-  colorClass: string;
 };
 
 type ResultCardProps = {
@@ -35,8 +33,6 @@ const ResultCard = ({ items }: ResultCardProps) => {
               key={item.category}
               category={item.category}
               score={item.score}
-              icon={item.icon}
-              colorClass={item.colorClass}
             />
           ))}
         </div>

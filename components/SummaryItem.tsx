@@ -1,23 +1,31 @@
-import Image from "next/image";
+import { Zap, Brain, MessageCircle, Eye } from "lucide-react";
 import "./SummaryItem.css";
 
 type SummaryItemProps = {
   category: string;
   score: number;
-  icon: string;
-  colorClass: string;
 };
 
-const SummaryItem = ({
-  category,
-  score,
-  icon,
-  colorClass,
-}: SummaryItemProps) => {
+const SummaryItem = ({ category, score }: SummaryItemProps) => {
+  const getIcon = () => {
+    switch (category) {
+      case "Reaction":
+        return <Zap size={20} />;
+      case "Memory":
+        return <Brain size={20} />;
+      case "Verbal":
+        return <MessageCircle size={20} />;
+      case "Visual":
+        return <Eye size={20} />;
+      default:
+        return null;
+    }
+  };
+
   return (
-    <div className={`summary-item ${colorClass}`}>
+    <div className={`summary-item ${category.toLowerCase()}`}>
       <div className="summary-left">
-        <Image src={icon} alt={category} width={20} height={20} />
+        {getIcon()}
         <span className="summary-category">{category}</span>
       </div>
 
